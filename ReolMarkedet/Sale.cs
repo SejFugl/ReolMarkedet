@@ -8,6 +8,7 @@ namespace ReolMarkedet
 {
     public class Sale
     {
+        public int saleId { get; set; }
         public double TotalPrice { get; set; }
         public DateTime SaleDate { get; set; }
 
