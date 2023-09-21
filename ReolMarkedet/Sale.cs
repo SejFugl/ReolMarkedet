@@ -9,12 +9,12 @@ namespace ReolMarkedet
     public class Sale
     {
         public double TotalPrice { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime SaleDate { get; set; }
 
-        public Sale(double totalPrice, DateTime date)
+        public Sale(double totalPrice, DateTime saleDate)
         {
             TotalPrice = totalPrice;
-            Date = date;
+            SaleDate = saleDate;
         }
 
         //public void MakeSale(string Barcode)
