@@ -5,9 +5,302 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReolMarkedet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="Select_All_Owners" Content="Button" HorizontalAlignment="Left" Margin="315,280,0,0" VerticalAlignment="Top" Height="65" Width="163" Click="Button_Click" FontSize="24"/>
+        Title="MainWindow" Height="445" Width="757" SizeToContent="WidthAndHeight">
 
-    </Grid>
+    <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+
+        <Grid Background="Aquamarine">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Click="Button_Click_2" Background="White" Margin="756,84,105,132" Grid.ColumnSpan="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Content="" BorderBrush="{x:Null}" Background="{x:Null}" Width="400" Height="350" Margin="136,116,361,147">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Image Source="/ddf.png" Stretch="Fill"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <TextBox TextWrapping="Wrap" IsReadOnly="True" IsHitTestVisible="False" Text="Velkommen til ReolMarkedet" TextChanged="TextBox_TextChanged" Margin="210,116,442,469" Background="{x:Null}" FontSize="18" FontFamily="Arial" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" SelectionBrush="{x:Null}"/>
+            <StackPanel HorizontalAlignment="Left" Margin="182,-89,0,469" Height="NaN" Orientation="Horizontal" Grid.Column="1"/>
+
+            <TextBox TextWrapping="Wrap" Text="Vælg bruger:" IsHitTestVisible="False" IsReadOnly="True" Margin="812,170,161,420" TextChanged="TextBox_TextChanged_1" FontFamily="Arial" FontSize="18" BorderBrush="{x:Null}" Background="{x:Null}" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" Foreground="Black" Grid.ColumnSpan="2"/>
+            <!-- Første knap med runde kanter -->
+
+            <Button Content="Ejer 1" Margin="802,243,151,351" BorderBrush="Black" Background="White" Click="Button_Click_5" Grid.ColumnSpan="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="LightBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="DarkBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" />
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Anden knap med runde kanter -->
+            <Button Content="Ejer 2" Margin="803,268,151,326" Width="130" Height="19.96" Background="White" BorderBrush="Black" Grid.ColumnSpan="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="LightBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="DarkBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" />
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Tredje knap med runde kanter -->
+            <Button Content="Ejer 3" Margin="803,293,151,301" Width="130" Height="19.96" Background="White" BorderBrush="Black" Click="Button_Click_7" Grid.ColumnSpan="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="LightBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="DarkBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" />
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Fjerde knap med runde kanter -->
+            <Button Content="Ejer 4" Margin="803,318,151,276" Width="130" Height="19.96" Background="White" BorderBrush="Black" Click="Button_Click_8" Grid.ColumnSpan="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="LightBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="DarkBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" />
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Femte knap med runde kanter -->
+            <Button Content="Admin" Margin="802,218,151,376" Background="White" BorderBrush="Black" Click="Button_Click_6" Grid.ColumnSpan="2">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                Storyboard.TargetProperty="(Panel.Background).                                   (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                            Value="LightBlue" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                Storyboard.TargetProperty="(Panel.Background).                                   (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                            Value="DarkBlue" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+            </Button>
+            <Button Content="Ejer 5" Margin="803,343,151,251" Width="130" Height="19.96" Background="White" BorderBrush="Black" Click="Button_Click_9" Grid.ColumnSpan="2">
+                <Button.Style>
+
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="LightBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Background"
+                                                        Storyboard.TargetProperty="(Panel.Background).                                                           (SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0"
+                                                    Value="DarkBlue" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border x:Name="Background" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" />
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+
+            <!-- Sjette knap med runde kanter -->
+
+
+
+        </Grid>
+    </Viewbox>
+
+
 </Window>

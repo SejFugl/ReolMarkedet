@@ -1,27 +1,25 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
 using System;
+using Azure;
+using System.Windows.Media.Animation;
 
 namespace ReolMarkedet
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page1 : Page
     {
-        public MainWindow()
+        public Page1()
         {
             {
                 InitializeComponent();
-
-                // Indstil vinduets bredde og højde til det ønskede størrelse
-                this.Width = 800; // Skift 800 til den ønskede bredde
-                this.Height = 600; // Skift 600 til den ønskede højde
-
-                // Indstil vinduets placering til CenterScreen (midten af skærmen)
-                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                
             }
         }
+
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -37,6 +35,7 @@ namespace ReolMarkedet
         {
 
         }
+       
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -100,7 +99,7 @@ namespace ReolMarkedet
 
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
     }
