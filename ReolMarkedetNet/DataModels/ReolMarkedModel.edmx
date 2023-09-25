@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_F23_TEAM_11Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="saleId" />
+          </Key>
+          <Property Name="saleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="priceTotal" Type="float" />
+          <Property Name="saleDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sale_Product">
+          <Key>
+            <PropertyRef Name="saleId" />
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="saleId" Type="int" Nullable="false" />
+          <Property Name="productId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shelf">
+          <Key>
+            <PropertyRef Name="shelfId" />
+          </Key>
+          <Property Name="shelfId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="ownerId" Type="int" />
+        </EntityType>
+        <EntityType Name="ShelfOwner">
+          <Key>
+            <PropertyRef Name="ownerId" />
+          </Key>
+          <Property Name="ownerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="phoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ShelfProduct">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="10" />
+          <Property Name="productDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="float" />
+          <Property Name="shelfId" Type="int" />
+          <Property Name="ownerId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Sale_Prod__produ__5812160E">
+          <End Role="ShelfProduct" Type="Self.ShelfProduct" Multiplicity="1" />
+          <End Role="Sale_Product" Type="Self.Sale_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelfProduct">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Sale_Product">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sale_Prod__saleI__571DF1D5">
+          <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
+          <End Role="Sale_Product" Type="Self.Sale_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="saleId" />
+            </Principal>
+            <Dependent Role="Sale_Product">
+              <PropertyRef Name="saleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shelf__ownerId__4E88ABD4">
+          <End Role="ShelfOwner" Type="Self.ShelfOwner" Multiplicity="0..1" />
+          <End Role="Shelf" Type="Self.Shelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelfOwner">
+              <PropertyRef Name="ownerId" />
+            </Principal>
+            <Dependent Role="Shelf">
+              <PropertyRef Name="ownerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShelfProd__owner__52593CB8">
+          <End Role="ShelfOwner" Type="Self.ShelfOwner" Multiplicity="0..1" />
+          <End Role="ShelfProduct" Type="Self.ShelfProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelfOwner">
+              <PropertyRef Name="ownerId" />
+            </Principal>
+            <Dependent Role="ShelfProduct">
+              <PropertyRef Name="ownerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShelfProd__shelf__5165187F">
+          <End Role="Shelf" Type="Self.Shelf" Multiplicity="0..1" />
+          <End Role="ShelfProduct" Type="Self.ShelfProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shelf">
+              <PropertyRef Name="shelfId" />
+            </Principal>
+            <Dependent Role="ShelfProduct">
+              <PropertyRef Name="shelfId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_F23_TEAM_11ModelStoreContainer">
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale_Product" EntityType="Self.Sale_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shelf" EntityType="Self.Shelf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShelfOwner" EntityType="Self.ShelfOwner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShelfProduct" EntityType="Self.ShelfProduct" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Sale_Prod__produ__5812160E" Association="Self.FK__Sale_Prod__produ__5812160E">
+            <End Role="ShelfProduct" EntitySet="ShelfProduct" />
+            <End Role="Sale_Product" EntitySet="Sale_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sale_Prod__saleI__571DF1D5" Association="Self.FK__Sale_Prod__saleI__571DF1D5">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Sale_Product" EntitySet="Sale_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shelf__ownerId__4E88ABD4" Association="Self.FK__Shelf__ownerId__4E88ABD4">
+            <End Role="ShelfOwner" EntitySet="ShelfOwner" />
+            <End Role="Shelf" EntitySet="Shelf" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShelfProd__owner__52593CB8" Association="Self.FK__ShelfProd__owner__52593CB8">
+            <End Role="ShelfOwner" EntitySet="ShelfOwner" />
+            <End Role="ShelfProduct" EntitySet="ShelfProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShelfProd__shelf__5165187F" Association="Self.FK__ShelfProd__shelf__5165187F">
+            <End Role="Shelf" EntitySet="Shelf" />
+            <End Role="ShelfProduct" EntitySet="ShelfProduct" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_F23_TEAM_11Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="saleId" />
+          </Key>
+          <Property Name="saleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="priceTotal" Type="Double" />
+          <Property Name="saleDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ShelfProduct" Relationship="Self.Sale_Product" FromRole="Sale" ToRole="ShelfProduct" />
+        </EntityType>
+        <EntityType Name="Shelf">
+          <Key>
+            <PropertyRef Name="shelfId" />
+          </Key>
+          <Property Name="shelfId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ownerId" Type="Int32" />
+          <NavigationProperty Name="ShelfOwner" Relationship="Self.FK__Shelf__ownerId__4E88ABD4" FromRole="Shelf" ToRole="ShelfOwner" />
+          <NavigationProperty Name="ShelfProduct" Relationship="Self.FK__ShelfProd__shelf__5165187F" FromRole="Shelf" ToRole="ShelfProduct" />
+        </EntityType>
+        <EntityType Name="ShelfOwner">
+          <Key>
+            <PropertyRef Name="ownerId" />
+          </Key>
+          <Property Name="ownerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shelf" Relationship="Self.FK__Shelf__ownerId__4E88ABD4" FromRole="ShelfOwner" ToRole="Shelf" />
+          <NavigationProperty Name="ShelfProduct" Relationship="Self.FK__ShelfProd__owner__52593CB8" FromRole="ShelfOwner" ToRole="ShelfProduct" />
+        </EntityType>
+        <EntityType Name="ShelfProduct">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="barcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="productDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Double" />
+          <Property Name="shelfId" Type="Int32" />
+          <Property Name="ownerId" Type="Int32" />
+          <NavigationProperty Name="Shelf" Relationship="Self.FK__ShelfProd__shelf__5165187F" FromRole="ShelfProduct" ToRole="Shelf" />
+          <NavigationProperty Name="ShelfOwner" Relationship="Self.FK__ShelfProd__owner__52593CB8" FromRole="ShelfProduct" ToRole="ShelfOwner" />
+          <NavigationProperty Name="Sale" Relationship="Self.Sale_Product" FromRole="ShelfProduct" ToRole="Sale" />
+        </EntityType>
+        <Association Name="FK__Shelf__ownerId__4E88ABD4">
+          <End Role="ShelfOwner" Type="Self.ShelfOwner" Multiplicity="0..1" />
+          <End Role="Shelf" Type="Self.Shelf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelfOwner">
+              <PropertyRef Name="ownerId" />
+            </Principal>
+            <Dependent Role="Shelf">
+              <PropertyRef Name="ownerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShelfProd__shelf__5165187F">
+          <End Role="Shelf" Type="Self.Shelf" Multiplicity="0..1" />
+          <End Role="ShelfProduct" Type="Self.ShelfProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shelf">
+              <PropertyRef Name="shelfId" />
+            </Principal>
+            <Dependent Role="ShelfProduct">
+              <PropertyRef Name="shelfId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ShelfProd__owner__52593CB8">
+          <End Role="ShelfOwner" Type="Self.ShelfOwner" Multiplicity="0..1" />
+          <End Role="ShelfProduct" Type="Self.ShelfProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelfOwner">
+              <PropertyRef Name="ownerId" />
+            </Principal>
+            <Dependent Role="ShelfProduct">
+              <PropertyRef Name="ownerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Sale_Product">
+          <End Role="ShelfProduct" Type="Self.ShelfProduct" Multiplicity="*" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DB_F23_TEAM_11Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sale" EntityType="Self.Sale" />
+          <EntitySet Name="Shelf" EntityType="Self.Shelf" />
+          <EntitySet Name="ShelfOwner" EntityType="Self.ShelfOwner" />
+          <EntitySet Name="ShelfProduct" EntityType="Self.ShelfProduct" />
+          <AssociationSet Name="FK__Shelf__ownerId__4E88ABD4" Association="Self.FK__Shelf__ownerId__4E88ABD4">
+            <End Role="ShelfOwner" EntitySet="ShelfOwner" />
+            <End Role="Shelf" EntitySet="Shelf" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShelfProd__shelf__5165187F" Association="Self.FK__ShelfProd__shelf__5165187F">
+            <End Role="Shelf" EntitySet="Shelf" />
+            <End Role="ShelfProduct" EntitySet="ShelfProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ShelfProd__owner__52593CB8" Association="Self.FK__ShelfProd__owner__52593CB8">
+            <End Role="ShelfOwner" EntitySet="ShelfOwner" />
+            <End Role="ShelfProduct" EntitySet="ShelfProduct" />
+          </AssociationSet>
+          <AssociationSet Name="Sale_Product" Association="Self.Sale_Product">
+            <End Role="ShelfProduct" EntitySet="ShelfProduct" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_F23_TEAM_11ModelStoreContainer" CdmEntityContainer="DB_F23_TEAM_11Entities2">
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="DB_F23_TEAM_11Model.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="saleId" ColumnName="saleId" />
+                <ScalarProperty Name="priceTotal" ColumnName="priceTotal" />
+                <ScalarProperty Name="saleDate" ColumnName="saleDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shelf">
+            <EntityTypeMapping TypeName="DB_F23_TEAM_11Model.Shelf">
+              <MappingFragment StoreEntitySet="Shelf">
+                <ScalarProperty Name="shelfId" ColumnName="shelfId" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShelfOwner">
+            <EntityTypeMapping TypeName="DB_F23_TEAM_11Model.ShelfOwner">
+              <MappingFragment StoreEntitySet="ShelfOwner">
+                <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShelfProduct">
+            <EntityTypeMapping TypeName="DB_F23_TEAM_11Model.ShelfProduct">
+              <MappingFragment StoreEntitySet="ShelfProduct">
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="shelfId" ColumnName="shelfId" />
+                <ScalarProperty Name="ownerId" ColumnName="ownerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Sale_Product" TypeName="DB_F23_TEAM_11Model.Sale_Product" StoreEntitySet="Sale_Product">
+            <EndProperty Name="ShelfProduct">
+              <ScalarProperty Name="productId" ColumnName="productId" />
+            </EndProperty>
+            <EndProperty Name="Sale">
+              <ScalarProperty Name="saleId" ColumnName="saleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
