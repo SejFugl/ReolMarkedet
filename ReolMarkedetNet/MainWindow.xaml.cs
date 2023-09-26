@@ -10,9 +10,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp2;
 
 namespace ReolMarkedetNet
 {
@@ -28,116 +30,43 @@ namespace ReolMarkedetNet
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GetShelf_Click(object sender, RoutedEventArgs e)
         {
-            int inputShelfId = 2;
+            //int inputShelfId = 2;
 
-            Shelf shelf = shelfRepository.GetShelf(inputShelfId);
+            //Shelf shelf = shelfRepository.GetShelf(inputShelfId);
 
-            if (shelf != null)
-            {
-                MessageBox.Show($"Shelf ID: {shelf?.shelfId}" +
-                    $"\nLocation: {shelf?.location}" +
-                    $"\nCategory: {shelf?.Category}" +
-                    $"\nOwner ID: {shelf?.ownerId}");
-            }
-            else
-            {
-                MessageBox.Show("Shelf not found");
-            }
+            //if (shelf != null)
+            //{
+            //    MessageBox.Show($"Shelf ID: {shelf?.shelfId}" +
+            //        $"\nLocation: {shelf?.location}" +
+            //        $"\nCategory: {shelf?.Category}" +
+            //        $"\nOwner ID: {shelf?.ownerId}");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Shelf not found");
+            //}
         }
 
-        private void CreateShelf_Click(object sender, RoutedEventArgs e)
+        private void Admin_Click(object sender, RoutedEventArgs e)
         {
-            try
+            // Start fade-out animation
+            var fadeOutStoryboard = (Storyboard)this.Resources["FadeOutStoryboard"];
+            fadeOutStoryboard.Completed += (s, args) =>
             {
-                string location = txtLocation.Text;
-                string category = txtCategory.Text;
-                int? ownerId = null;
+                Page1 page1 = new Page1();
+                page1.Width = this.ActualWidth;
+                page1.Height = this.ActualHeight;
 
-                if (!string.IsNullOrEmpty(txtOwnerId.Text))
-                {
-                    ownerId = int.Parse(txtOwnerId.Text);
-                }
+                // Naviger til Page1
+                Frame1.Navigate(page1);
 
-                Shelf newShelf = new Shelf
-                {
-                    location = location,
-                    Category = category,
-                    ownerId = ownerId
-                };
-
-                ShelfRepository shelfRepository = new ShelfRepository();
-                shelfRepository.CreateShelf(newShelf);
-
-                MessageBox.Show("Ny reol oprettet");
-
-                txtLocation.Clear();
-                txtCategory.Clear();
-                txtOwnerId.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Fejl i oprettelsen af ny reol: {ex.Message}");
-            }
-        }
-
-        private void UpdateShelf_Click(object sender, RoutedEventArgs e )
-        {
-            try
-            {
-                int shelfId = int.Parse(txtShelfId.Text);
-                
-                ShelfRepository shelfRepository = new ShelfRepository();
-
-                Shelf existingShelf = shelfRepository.GetShelf(shelfId);
-
-                if (existingShelf != null)
-                {
-                    existingShelf.location = txtLocation.Text;
-                    existingShelf.Category = txtCategory.Text;
-                    existingShelf.ownerId = int.Parse(txtOwnerId.Text);
-
-                    shelfRepository.UpdateShelf(existingShelf);
-
-                    MessageBox.Show("Reol opdateret");
-                }
-                else
-                {
-                    MessageBox.Show("Reol findes ikke");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Fejl i opdatering af reol: {ex.Message}");
-            }
-        }
-
-        private void DeleteShelf_Click(object sender, RoutedEventArgs e )
-        {
-            try
-            {
-                int shelfId = int.Parse(txtShelfId.Text);
-
-                ShelfRepository shelfRepository = new ShelfRepository();
-
-                Shelf shelfToDelete = shelfRepository.GetShelf(shelfId);
-
-                if (shelfToDelete != null)
-                {
-                    shelfRepository.DeleteShelf(shelfId);
-
-                    MessageBox.Show("Reol slettet");
-                }
-                else
-                {
-                    MessageBox.Show("Reol findes ikke");
-                }
-            }
-            catch ( Exception ex )
-            {
-                MessageBox.Show($"Fejl i sletning af reol: {ex.Message}");
-            }
+                // Start fade-in animation
+                var fadeInStoryboard = (Storyboard)this.Resources["FadeInStoryboard"];
+                fadeInStoryboard.Begin(MainGrid);
+            };
+            fadeOutStoryboard.Begin(MainGrid);
         }
     }
 }

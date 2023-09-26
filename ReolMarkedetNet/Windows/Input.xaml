@@ -1,0 +1,22 @@
+﻿<Window x:Class="ReolMarkedetNet.Windows.Input"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReolMarkedetNet.Windows"
+        mc:Ignorable="d"
+        Title="Input" Height="450" Width="800">
+    <Grid>
+        <Label Content="Shelf-ID:" HorizontalAlignment="Left" Margin="262,129,0,0" VerticalAlignment="Top"/>
+        <Label Content="Location:" HorizontalAlignment="Left" Margin="262,159,0,0" VerticalAlignment="Top"/>
+        <Label Content="Category:" HorizontalAlignment="Left" Margin="262,189,0,0" VerticalAlignment="Top"/>
+        <Label Content="Owner-ID:" HorizontalAlignment="Left" Margin="262,219,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtShelfId" HorizontalAlignment="Left" Margin="380,129,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtLocation" HorizontalAlignment="Left" Margin="380,159,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCategory" HorizontalAlignment="Left" Margin="380,189,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtOwnerId" HorizontalAlignment="Left" Margin="380,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="OK" Click="OK_Click" HorizontalAlignment="Left" Margin="380,262,0,0" VerticalAlignment="Top" Width="50"/>
+        <Button Content="Cancel" Click="Cancel_Click" HorizontalAlignment="Left" Margin="450,262,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

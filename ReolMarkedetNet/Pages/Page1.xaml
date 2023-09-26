@@ -1,25 +1,15 @@
-﻿<Window x:Class="ReolMarkedetNet.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ReolMarkedetNet"
-        mc:Ignorable="d" 
-        d:DesignHeight="450" d:DesignWidth="800"
-        Title="Page1" HorizontalAlignment="Center" VerticalAlignment="Center">
+﻿<Page x:Class="WpfApp2.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-    <Window.Resources>
-        <!--FADE animation-->
-        <Storyboard x:Key="FadeOutStoryboard">
-            <DoubleAnimation Storyboard.TargetName="MainGrid" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.5" />
-        </Storyboard>
-        <Storyboard x:Key="FadeInStoryboard">
-            <DoubleAnimation Storyboard.TargetName="MainGrid" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
-        </Storyboard>
-    </Window.Resources>
-
-    <Grid x:Name="MainGrid" Height="NaN" Width="NaN" Opacity="1">
-        <!--Baggrund-->
+    <Grid 
+        > 
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black"/>
@@ -27,17 +17,15 @@
                 <GradientStop Color="#FF00B4FF"/>
             </LinearGradientBrush>
         </Grid.Background>
+
         <!--Kasse til menu-->
-        <Rectangle HorizontalAlignment="Center" VerticalAlignment="Center" Width="137" Height="239" Stroke="White" RadiusX="10" RadiusY="10" StrokeThickness="3"/>
+        <Rectangle HorizontalAlignment="Center" VerticalAlignment="Center" Width="137" Height="239" Stroke="#FFFFE9E9" RadiusX="10" RadiusY="10" StrokeThickness="3"/>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-
-
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="238">
             <!--Tekst til menu-->
-            <TextBlock Text="Vælg bruger:" FontFamily="Segoe UI" FontSize="16" Foreground="White" Margin="10" Width="90"/>
-
-            <!-- Admin knap -->
-            <Button Content="Admin" Click="Admin_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+            <TextBlock FontFamily="Segoe UI" FontSize="15" Foreground="White" Width="125" Margin="10"><Run Language="da-dk" Text="Velkommen admin"/></TextBlock>
+            <!--"Vis ejer"-->
+            <Button Content="Vis ejer" Click="Button_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -59,31 +47,8 @@
                 </Button.Style>
             </Button>
 
-            <!-- Ejer 1 knap -->
-            <Button Content="Ejer 1" Click="Admin_Click" Width="100" Height="20" Margin="0,3" Background="#FFDDDDDD" Foreground="White">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border x:Name="border" CornerRadius="10" BorderThickness="2" BorderBrush="White">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <!-- Trigger for når musen er over knappen -->
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="border" Property="Background" Value="#FF27C3DB"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Button.Style>
-            </Button>
-
-            <!-- Ejer 2 knap -->
-            <Button Content="Ejer 2" Click="Admin_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+            <!-- Opret ejer -->
+            <Button Content="Opret ejer" Click="Button_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -105,8 +70,8 @@
                 </Button.Style>
             </Button>
 
-            <!-- Ejer 3 knap -->
-            <Button Content="Ejer 3" Click="Admin_Click" Width="100" Height="20" Margin="0,3" Background="{x:Null}" Foreground="White">
+            <!-- Slet ejer -->
+            <Button Content="Slet ejer" Click="Button_Click" Width="100" Height="20" Margin="0,3" Background="#FFDDDDDD" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -128,8 +93,8 @@
                 </Button.Style>
             </Button>
 
-            <!-- Ejer 4 knap -->
-            <Button Content="Ejer 4" Click="Admin_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+            <!-- Vis reol -->
+            <Button Content="Vis reol" Click="GetShelf_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -151,8 +116,8 @@
                 </Button.Style>
             </Button>
 
-            <!-- Ejer 5 knap -->
-            <Button Content="Ejer 5" Click="Admin_Click" Width="100" Height="20" Margin="0,3" Background="White" Foreground="White">
+            <!-- Opret reol -->
+            <Button Content="Opret reol" Click="CreateShelf_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -173,10 +138,54 @@
                     </Style>
                 </Button.Style>
             </Button>
-
-            <TextBlock  TextWrapping="Wrap" Text="© 2023 ReolMarkedet" Foreground="White" Margin="10"/>
+            <!--Slet reol-->
+            <Button Content="Slet reol" Click="DeleteShelf_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" CornerRadius="10" BorderThickness="2" BorderBrush="White" Background="{x:Null}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger for når musen er over knappen -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF27C3DB"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <!--Ændre reol-->
+            <Button Content="Ændr reol" Click="UpdateShelf_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" CornerRadius="10" BorderThickness="2" BorderBrush="White" Background="{x:Null}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger for når musen er over knappen -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF27C3DB"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
+        <Button Content="Tilbage til forside" Click="NavigateBackToMain" Margin="352,349,352,81" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" HorizontalAlignment="Center" />
 
-        <Frame x:Name="Frame1" NavigationUIVisibility="Hidden"/>
     </Grid>
-</Window>
+
+
+</Page>
