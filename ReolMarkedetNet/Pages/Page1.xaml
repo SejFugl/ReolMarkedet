@@ -9,7 +9,7 @@
       Title="Page1" HorizontalAlignment="Center" VerticalAlignment="Center">
 
     <Grid 
-        > 
+        >
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black"/>
@@ -23,9 +23,9 @@
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="238">
             <!--Tekst til menu-->
-            <TextBlock FontFamily="Segoe UI" FontSize="15" Foreground="White" Width="125" Margin="10"><Run Language="da-dk" Text="Velkommen admin"/></TextBlock>
+            <TextBlock FontFamily="Segoe UI" FontSize="15" Foreground="White" Width="125" Margin="3"><Run Language="da-dk" Text="Velkommen admin"/></TextBlock>
             <!--"Vis ejer"-->
-            <Button Content="Vis ejer" Click="Button_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+            <Button Content="Vis ejer" Click="GetOwner_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -48,7 +48,7 @@
             </Button>
 
             <!-- Opret ejer -->
-            <Button Content="Opret ejer" Click="Button_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
+            <Button Content="Opret ejer" Click="CreateOwner_Click" Width="100" Height="20" Margin="0,3" Foreground="White">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">
@@ -71,7 +71,28 @@
             </Button>
 
             <!-- Slet ejer -->
-            <Button Content="Slet ejer" Click="Button_Click" Width="100" Height="20" Margin="0,3" Background="#FFDDDDDD" Foreground="White">
+            <Button Content="Slet ejer" Click="DeleteOwner_Click" Width="100" Height="20" Margin="0,3" Background="#FFDDDDDD" Foreground="White">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="border" CornerRadius="10" BorderThickness="2" BorderBrush="White" Background="{x:Null}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Trigger for når musen er over knappen -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF27C3DB"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Ændr ejer" Click="UpdateOwner_Click" Width="100" Height="20" Foreground="White" Margin="0,3">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Template">

@@ -30,25 +30,6 @@ namespace ReolMarkedetNet
             InitializeComponent();
         }
 
-        private void GetShelf_Click(object sender, RoutedEventArgs e)
-        {
-            //int inputShelfId = 2;
-
-            //Shelf shelf = shelfRepository.GetShelf(inputShelfId);
-
-            //if (shelf != null)
-            //{
-            //    MessageBox.Show($"Shelf ID: {shelf?.shelfId}" +
-            //        $"\nLocation: {shelf?.location}" +
-            //        $"\nCategory: {shelf?.Category}" +
-            //        $"\nOwner ID: {shelf?.ownerId}");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Shelf not found");
-            //}
-        }
-
         private void Admin_Click(object sender, RoutedEventArgs e)
         {
             // Start fade-out animation
