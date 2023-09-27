@@ -49,5 +49,31 @@ namespace ReolMarkedetNet
             };
             fadeOutStoryboard.Begin(MainGrid);
         }
+
+        private void Owner_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                int ownerId = int.Parse(clickedButton.Tag.ToString());
+
+                // Start fade-out animation
+                var fadeOutStoryboard = (Storyboard)this.Resources["FadeOutStoryboard"];
+                fadeOutStoryboard.Completed += (s, args) =>
+                {
+                    Page2 page2 = new Page2(ownerId);
+                    page2.Width = this.ActualWidth;
+                    page2.Height = this.ActualHeight;
+
+                    // Naviger til Page2
+                    Frame1.Navigate(page2);
+
+                    // Start fade-in animation
+                    var fadeInStoryboard = (Storyboard)this.Resources["FadeInStoryboard"];
+                    fadeInStoryboard.Begin(MainGrid);
+                };
+                fadeOutStoryboard.Begin(MainGrid);
+            }
+        }
     }
 }
